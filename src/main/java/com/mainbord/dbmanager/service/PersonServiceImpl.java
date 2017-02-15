@@ -38,7 +38,7 @@ public class PersonServiceImpl implements  PersonService{
     @Transactional
     public Person getPersonById(int id) {
 
-        return this.peopleDao.getPersonById(id);;
+        return this.peopleDao.getPersonById(id);
     }
 
     @Transactional
