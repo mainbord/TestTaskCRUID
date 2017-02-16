@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by work on 15.02.2017.
  */
-public interface PeopleDao {
+public interface PersonDao {
     public void addPerson (Person person);
     public void updatePerson (Person person);
     public void removePerson (int id);

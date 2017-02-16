@@ -10,7 +10,7 @@ import java.util.List;
  * Created by work on 15.02.2017.
  */
 @Repository
-public class PeopleDaoImpl implements PeopleDao {
+public class PersonDaoImpl implements PersonDao {
 
     private SessionFactory sessionFactory;
 
