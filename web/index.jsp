@@ -6,7 +6,7 @@
 <body>
 <h3>Proselyte presents</h3>
 <br/>
-<a href="peopls" target="_blank">People list</a>
+<a href="/peopls" target="_blank">People list</a>
 <br/>
 </body>
 </html>

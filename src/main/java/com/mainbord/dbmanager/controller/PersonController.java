@@ -26,9 +26,9 @@ public class PersonController {
     }
 
     @RequestMapping(value = "people", method = RequestMethod.GET)
-    public String listBooks (Model model){
+    public String listPeople(Model model){
         model.addAttribute("person", new Person());
-        model.addAttribute("listBooks", this.personService.listPeople());
+        model.addAttribute("listPeople", this.personService.listPeople());
 
         return "people";
     }
