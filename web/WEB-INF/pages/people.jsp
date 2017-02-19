@@ -44,7 +44,7 @@
 
 <h1>Add a Book</h1>
 
-<c:url var="addAction" value="/people/add"/>
+<%--<c:url var="addAction" value="/people/add"/>
 
 <form:form action="${addAction}" commandName="person">
     <table>
@@ -92,6 +92,16 @@
             </td>
         </tr>
         <tr>
+            <td>
+                <form:label path="createdDate">
+                    <spring:message text="createdDate"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="createdDate"/>
+            </td>
+        </tr>
+        <tr>
             <td colspan="2">
                 <c:if test="${!empty person.name}">
                     <input type="submit"
@@ -104,6 +114,6 @@
             </td>
         </tr>
     </table>
-</form:form>
+</form:form>--%>
 </body>
 </html>
