@@ -19,7 +19,7 @@
 <c:if test="${!empty listPeople}">
     <table class="tg">
         <tr>
-            <th width="80">ID</th>
+            <th width="80">id</th>
             <th width="120">name</th>
             <th width="120">age</th>
             <th width="120">isAdmin</th>
@@ -29,7 +29,7 @@
         </tr>
         <c:forEach items="${listPeople}" var="person">
             <tr>
-                <td>${person.ID}</td>
+                <td>${person.id}</td>
                 <td>${person.name}</td>
                 <td>${person.age}</td>
                 <td>${person.isAdmin}</td>

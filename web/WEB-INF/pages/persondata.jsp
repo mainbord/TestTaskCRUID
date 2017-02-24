@@ -44,6 +44,9 @@
         .tg .tg-4eph {
             background-color: #f9f9f9
         }
+        .tg .tg-4eph {
+            background-color: #f9f9f9
+        }
     </style>
 
 </head>
@@ -52,7 +55,7 @@
 
 <table class="tg">
     <tr>
-        <th width="80">ID</th>
+        <th width="80">id</th>
         <th width="120">name</th>
         <th width="120">age</th>
         <th width="120">isAdmin</th>

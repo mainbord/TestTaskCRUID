@@ -6,7 +6,7 @@ package com.mainbord.dbmanager.model;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "user")
 public class Person {
     @Id
     @Column(name = "id")
