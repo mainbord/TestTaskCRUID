@@ -2,10 +2,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>MMMMMMelyte</title>
+    <title>People manager</title>
 </head>
 <body>
-<h3>MMMMMMMMM presents</h3>
+<h3>H3 Head</h3>
 <br/>
 <a href="<c:url value="/people"/>" target="_blank">People list</a>
 <br/>

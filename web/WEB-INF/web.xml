@@ -7,7 +7,7 @@
          version="3.1"
          metadata-complete="true">
 
-    <display-name>People Manager</display-name>
+    <display-name>PeopleManager</display-name>
 <!--    <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/applicationContext.xml</param-value>

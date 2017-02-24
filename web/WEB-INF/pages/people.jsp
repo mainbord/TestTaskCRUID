@@ -34,17 +34,17 @@
                 <td>${person.age}</td>
                 <td>${person.isAdmin}</td>
                 <td>${person.createdDate}</td>
-                <td><a href="<c:url value='/edit/${person.ID}'/>">">Edit</a></td>
-                <td><a href="<c:url value='/remove/${person.ID}'/>">">Delete</a></td>
+                <td><a href="<c:url value='/edit/${person.id}'/>">">Edit</a></td>
+                <td><a href="<c:url value='/remove/${person.id}'/>">">Delete</a></td>
             </tr>
         </c:forEach>
     </table>
 </c:if>
 
 
-<h1>Add a Book</h1>
+<h1>Add a Person</h1>
 
-<%--<c:url var="addAction" value="/people/add"/>
+<c:url var="addAction" value="/people/add"/>
 
 <form:form action="${addAction}" commandName="person">
     <table>
@@ -52,7 +52,7 @@
             <tr>
                 <td>
                     <form:label path="id">
-                        <spring:message text="ID"/>
+                        <spring:message text="id"/>
                     </form:label>
                 </td>
                 <td>
@@ -64,7 +64,7 @@
         <tr>
             <td>
                 <form:label path="name">
-                    <spring:message text="Name"/>
+                    <spring:message text="name"/>
                 </form:label>
             </td>
             <td>
@@ -74,17 +74,17 @@
         <tr>
             <td>
                 <form:label path="age">
-                    <spring:message text="Age"/>
+                    <spring:message text="age"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="Age"/>
+                <form:input path="age"/>
             </td>
         </tr>
         <tr>
             <td>
                 <form:label path="isAdmin">
-                    <spring:message text="IsAdmin"/>
+                    <spring:message text="isAdmin"/>
                 </form:label>
             </td>
             <td>
@@ -113,7 +113,22 @@
                 </c:if>
             </td>
         </tr>
+
+
+        <tr>
+            <td colspan="2">
+                <c:if test="${!empty book.bookTitle}">
+                    <input type="submit"
+                           value="<spring:message text="Edit Book"/>"/>
+                </c:if>
+                <c:if test="${empty book.bookTitle}">
+                    <input type="submit"
+                           value="<spring:message text="Add Book"/>"/>
+                </c:if>
+            </td>
+        </tr>
+
     </table>
-</form:form>--%>
+</form:form>
 </body>
 </html>

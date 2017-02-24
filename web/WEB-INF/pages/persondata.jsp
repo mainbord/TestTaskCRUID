@@ -51,7 +51,7 @@
 
 </head>
 <body>
-<h1>Book Details</h1>
+<h1>Person Details</h1>
 
 <table class="tg">
     <tr>

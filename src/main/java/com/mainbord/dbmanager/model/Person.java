@@ -3,27 +3,38 @@ package com.mainbord.dbmanager.model;
 /**
  * Created by work on 15.02.2017.
  */
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "user")
 public class Person {
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column (name = "name")
+    @Column (name = "name", nullable = false)
     private String name;
 
-    @Column (name = "age")
+    @Column (name = "age", nullable = false)
     private int age;
 
-    @Column (name = "isAdmin")
-    private Boolean isAdmin;
+/*    @Column(name = "isAdmin", nullable = false, columnDefinition = "TINYINT(1)")*/
+/*    @Column(name = "isAdmin", nullable = false, columnDefinition = "TINYINT", length = 1)*/
+/*    @Column(name = "isAdmin", nullable = false)
+    @Type(type = "org.hibernate.type.NumericBooleanType")*/
+/*    @Basic
+    @Column(name = "isAdmin", columnDefinition = "BIT", length = 1)*/
+/*    @Column(name = "isAdmin", nullable = false, columnDefinition = "BIT", length = 1)*/
+    @Column (name = "isAdmin", nullable = false)
+    private int isAdmin;
 
-    @Column (name = "createdDate")
-    private String createdDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column (name = "createdDate", nullable = false)
+    private Date createdDate;
 
     public int getId() {
         return id;
@@ -37,11 +48,11 @@ public class Person {
         return age;
     }
 
-    public Boolean getAdmin() {
+    public int getisAdmin() {
         return isAdmin;
     }
 
-    public String getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
 
@@ -57,11 +68,11 @@ public class Person {
         this.age = age;
     }
 
-    public void setAdmin(Boolean admin) {
+    public void setisAdmin(int admin) {
         isAdmin = admin;
     }
 
-    public void setCreatedDate(String createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 }

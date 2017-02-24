@@ -31,7 +31,6 @@ public class PersonDaoImpl implements PersonDao {
     public void removePerson(int id) {
         Session session = this.sessionFactory.getCurrentSession();
         Person person = (Person) session.load(Person.class, new Integer(id));
-        session.remove(person);
 
         if (person != null){
             session.delete(person);
