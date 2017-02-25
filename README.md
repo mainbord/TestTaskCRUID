@@ -1,8 +1,6 @@
 # TestTaskCRUD
 
-Java + hibernate + spring + maven + mysql + tomcat   + git
-
-
+Java + hibernate + spring + maven + mysql + tomcat   + git + tomcat
 Database mysql: test
 root
 root
