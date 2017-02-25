@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 /**
  * Created by work on 16.02.2017.
  */
@@ -33,9 +32,9 @@ public class PersonController {
         return "people";
     }
 
-    @RequestMapping(value = "/people/add")
+    @RequestMapping(value = "/people/add", method = RequestMethod.POST)
     public String addPerson(@ModelAttribute("person") Person person){
-        if(person.getId() == 0){
+        if(person.getIdd() == 0){
             this.personService.addPerson(person);
         }
         else {
@@ -51,16 +50,17 @@ public class PersonController {
         return "redirect:/people";
     }
 
+
     @RequestMapping("edit/{id}")
-    public String editPerson(@PathVariable("id") int id , Model model){
-        model.addAttribute("person", this. personService.getPersonById(id));
+    public String editBook(@PathVariable("id") int id, Model model){
+        model.addAttribute("person", this.personService.getPersonById(id));
         model.addAttribute("listPeople", this.personService.listPeople());
 
         return "people";
     }
 
     @RequestMapping("persondata/{id}")
-    public String personData(@PathVariable("id") int id, Model model){
+    public String bookData(@PathVariable("id") int id, Model model){
         model.addAttribute("person", this.personService.getPersonById(id));
 
         return "persondata";

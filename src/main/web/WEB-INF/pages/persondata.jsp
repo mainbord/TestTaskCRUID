@@ -62,9 +62,9 @@
         <th width="120">createdDate</th>
     </tr>
     <tr>
-        <td>${person.id}</td>
+        <td>${person.idd}</td>
         <td>${person.name}</td>
-        <td>${person.age}</td>
+        <td>${person.agge}</td>
         <td>${person.isAdmin}</td>
         <td>${person.createdDate}</td>
     </tr>

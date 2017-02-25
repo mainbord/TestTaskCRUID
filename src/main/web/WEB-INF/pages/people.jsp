@@ -3,10 +3,52 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
 <%@ page session="false" %>
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
 <html>
 <head>
     <title>Title</title>
+
+    <style type="text/css">
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border-color: #ccc;
+        }
+
+        .tg td {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 10px 5px;
+            border-style: solid;
+            border-width: 1px;
+            overflow: hidden;
+            word-break: normal;
+            border-color: #ccc;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .tg th {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            padding: 10px 5px;
+            border-style: solid;
+            border-width: 1px;
+            overflow: hidden;
+            word-break: normal;
+            border-color: #ccc;
+            color: #333;
+            background-color: #f0f0f0;
+        }
+
+        .tg .tg-4eph {
+            background-color: #f9f9f9
+        }
+
+        .tg .tg-4eph {
+            background-color: #f9f9f9
+        }
+    </style>
 </head>
 <body>
 <a href="../../index.jsp">Back to main menu</a>
@@ -19,28 +61,27 @@
 <c:if test="${!empty listPeople}">
     <table class="tg">
         <tr>
-            <th width="80">id</th>
-            <th width="120">name</th>
-            <th width="120">age</th>
-            <th width="120">isAdmin</th>
-            <th width="120">createdDate</th>
+            <th width="80">Id</th>
+            <th width="120">Name</th>
+            <th width="120">Age</th>
+            <th width="120">IsAdmin</th>
+            <th width="120">CreatedDate</th>
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
         <c:forEach items="${listPeople}" var="person">
             <tr>
-                <td>${person.id}</td>
-                <td>${person.name}</td>
-                <td>${person.age}</td>
+                <td>${person.idd}</td>
+                <td><a href="/persondata/${person.idd}" target="_blank">${person.name}</a></td>
+                <td>${person.agge}</td>
                 <td>${person.isAdmin}</td>
                 <td>${person.createdDate}</td>
-                <td><a href="<c:url value='/edit/${person.id}'/>">">Edit</a></td>
-                <td><a href="<c:url value='/remove/${person.id}'/>">">Delete</a></td>
+                <td><a href="<c:url value='/edit/${person.idd}'/>">Edit ${person.idd}</a></td>
+                <td><a href="<c:url value='/remove/${person.idd}'/>">Delete ${person.idd}</a></td>
             </tr>
         </c:forEach>
     </table>
 </c:if>
-
 
 <h1>Add a Person</h1>
 
@@ -51,20 +92,20 @@
         <c:if test="${!empty person.name}">
             <tr>
                 <td>
-                    <form:label path="id">
+                    <form:label path="idd">
                         <spring:message text="id"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="id" readonly="true" size="8" disabled="true"/>
-                    <form:hidden path="id"/>
+                    <form:input path="idd" readonly="true" size="8" disabled="true"/>
+                    <form:hidden path="idd"/>
                 </td>
             </tr>
         </c:if>
         <tr>
             <td>
                 <form:label path="name">
-                    <spring:message text="name"/>
+                    <spring:message text="nammmmmmme"/>
                 </form:label>
             </td>
             <td>
@@ -73,12 +114,12 @@
         </tr>
         <tr>
             <td>
-                <form:label path="age">
+                <form:label path="agge">
                     <spring:message text="age"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="age"/>
+                <form:input path="agge"/>
             </td>
         </tr>
         <tr>
@@ -113,21 +154,6 @@
                 </c:if>
             </td>
         </tr>
-
-
-        <tr>
-            <td colspan="2">
-                <c:if test="${!empty book.bookTitle}">
-                    <input type="submit"
-                           value="<spring:message text="Edit Book"/>"/>
-                </c:if>
-                <c:if test="${empty book.bookTitle}">
-                    <input type="submit"
-                           value="<spring:message text="Add Book"/>"/>
-                </c:if>
-            </td>
-        </tr>
-
     </table>
 </form:form>
 </body>

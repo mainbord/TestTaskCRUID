@@ -3,7 +3,6 @@ package com.mainbord.dbmanager.model;
 /**
  * Created by work on 15.02.2017.
  */
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,43 +11,43 @@ import java.util.Date;
 @Table(name = "user")
 public class Person {
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int idd;
 
-    @Column (name = "name", nullable = false)
+    @Column (name = "name")
     private String name;
 
-    @Column (name = "age", nullable = false)
-    private int age;
+    @Column (name = "age")
+    private int agge;
 
-/*    @Column(name = "isAdmin", nullable = false, columnDefinition = "TINYINT(1)")*/
-/*    @Column(name = "isAdmin", nullable = false, columnDefinition = "TINYINT", length = 1)*/
-/*    @Column(name = "isAdmin", nullable = false)
+/*    @Column(namme = "isAdmin", nullable = false, columnDefinition = "TINYINT(1)")*/
+/*    @Column(namme = "isAdmin", nullable = false, columnDefinition = "TINYINT", length = 1)*/
+/*    @Column(namme = "isAdmin", nullable = false)
     @Type(type = "org.hibernate.type.NumericBooleanType")*/
 /*    @Basic
-    @Column(name = "isAdmin", columnDefinition = "BIT", length = 1)*/
-/*    @Column(name = "isAdmin", nullable = false, columnDefinition = "BIT", length = 1)*/
-    @Column (name = "isAdmin", nullable = false)
+    @Column(namme = "isAdmin", columnDefinition = "BIT", length = 1)*/
+/*    @Column(namme = "isAdmin", nullable = false, columnDefinition = "BIT", length = 1)*/
+    @Column (name = "isAdmin")
     private int isAdmin;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column (name = "createdDate", nullable = false)
+    @Column (name = "createdDate", columnDefinition = "1987-02-20 12:12:12")
     private Date createdDate;
 
-    public int getId() {
-        return id;
+    public int getIdd() {
+        return idd;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getAge() {
-        return age;
+    public int getAgge() {
+        return agge;
     }
 
-    public int getisAdmin() {
+    public int getIsAdmin() {
         return isAdmin;
     }
 
@@ -56,23 +55,34 @@ public class Person {
         return createdDate;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdd(int idd) {
+        this.idd = idd;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setAgge(int agge) {
+        this.agge = agge;
     }
 
-    public void setisAdmin(int admin) {
-        isAdmin = admin;
+    public void setIsAdmin(int isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "idd=" + idd +
+                ", namme='" + name + '\'' +
+                ", agge=" + agge +
+                ", isAdmin=" + isAdmin +
+                ", createdDate=" + createdDate +
+                '}';
     }
 }

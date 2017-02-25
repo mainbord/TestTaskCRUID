@@ -18,16 +18,19 @@ public class PersonDaoImpl implements PersonDao {
         this.sessionFactory = sessionFactory;
     }
 
+    @Override
     public void addPerson(Person person) {
         Session session = this.sessionFactory.getCurrentSession();
         session.persist(person);
     }
 
+    @Override
     public void updatePerson(Person person) {
         Session session = this.sessionFactory.getCurrentSession();
         session.update(person);
     }
 
+    @Override
     public void removePerson(int id) {
         Session session = this.sessionFactory.getCurrentSession();
         Person person = (Person) session.load(Person.class, new Integer(id));
@@ -37,16 +40,19 @@ public class PersonDaoImpl implements PersonDao {
         }
     }
 
+    @Override
     public Person getPersonById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
         Person person = (Person) session.load(Person.class, new Integer(id));
         return person;
     }
 
+    @Override
     @SuppressWarnings("unchecked")
     public List<Person> listPeople() {
         Session session = this.sessionFactory.getCurrentSession();
         List<Person> personList = session.createQuery("from Person").list();
+
         return personList;
     }
 }
