@@ -71,17 +71,21 @@
         </tr>
         <c:forEach items="${listPeople}" var="person">
             <tr>
-                <td>${person.idd}</td>
-                <td><a href="/persondata/${person.idd}" target="_blank">${person.name}</a></td>
-                <td>${person.agge}</td>
+                <td>${person.id}</td>
+                <td><a href="/persondata/${person.id}" target="_blank">${person.name}</a></td>
+                <td>${person.age}</td>
                 <td>${person.isAdmin}</td>
                 <td>${person.createdDate}</td>
-                <td><a href="<c:url value='/edit/${person.idd}'/>">Edit ${person.idd}</a></td>
-                <td><a href="<c:url value='/remove/${person.idd}'/>">Delete ${person.idd}</a></td>
+                <td><a href="<c:url value='/edit/${person.id}'/>">Edit </a></td>
+                <td><a href="<c:url value='/remove/${person.id}'/>">Delete ${person.id}</a></td>
             </tr>
         </c:forEach>
     </table>
 </c:if>
+
+__________________
+${hhh}
+_____________
 
 <h1>Add a Person</h1>
 
@@ -92,20 +96,20 @@
         <c:if test="${!empty person.name}">
             <tr>
                 <td>
-                    <form:label path="idd">
-                        <spring:message text="id"/>
+                    <form:label path="id">
+                        <spring:message text="Id"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="idd" readonly="true" size="8" disabled="true"/>
-                    <form:hidden path="idd"/>
+                    <form:input path="id" readonly="true" size="8" disabled="true"/>
+                    <form:hidden path="id"/>
                 </td>
             </tr>
         </c:if>
         <tr>
             <td>
                 <form:label path="name">
-                    <spring:message text="nammmmmmme"/>
+                    <spring:message text="Name"/>
                 </form:label>
             </td>
             <td>
@@ -114,34 +118,34 @@
         </tr>
         <tr>
             <td>
-                <form:label path="agge">
-                    <spring:message text="age"/>
+                <form:label path="age">
+                    <spring:message text="Age"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="agge"/>
+                <form:input path="age"/>
             </td>
         </tr>
         <tr>
             <td>
                 <form:label path="isAdmin">
-                    <spring:message text="isAdmin"/>
+                    <spring:message text="IsAdmin"/>
                 </form:label>
             </td>
             <td>
                 <form:input path="isAdmin"/>
             </td>
         </tr>
-        <tr>
+<%--        <tr>
             <td>
                 <form:label path="createdDate">
-                    <spring:message text="createdDate"/>
+                    <spring:message text="CreatedDate"/>
                 </form:label>
             </td>
             <td>
                 <form:input path="createdDate"/>
             </td>
-        </tr>
+        </tr>--%>
         <tr>
             <td colspan="2">
                 <c:if test="${!empty person.name}">
@@ -155,6 +159,22 @@
             </td>
         </tr>
     </table>
+</form:form>
+
+<c:url var="searchAction" value="/people/find/{name}"/>
+
+<form:form action="${searchAction}" commandName="person">
+    <tr>
+        <td colspan="3">
+            <input type="submit"
+                   value="<spring:message text="Find Person by name"/>"/>
+        </td>
+    </tr>
+
+
+<%--    <td>
+        <form:input path="search_name"/>
+    </td>--%>
 </form:form>
 </body>
 </html>

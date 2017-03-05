@@ -7,7 +7,7 @@
 <body>
 <h3>H3 Head</h3>
 <br/>
-<a href="<c:url value="/people"/>" target="_blank">People list</a>
+<a href="<c:url value="/people/1"/>" target="_blank">People list</a>
 <br/>
 </body>
 </html>

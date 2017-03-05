@@ -16,5 +16,6 @@ public interface PersonDao {
 
     public Person getPersonById (int id);
 
+    public List<Person> listPeople(int pageid,int total);
     public List<Person> listPeople();
 }

@@ -22,6 +22,8 @@ public class PersonServiceImpl implements  PersonService{
     @Override
     @Transactional
     public void addPerson(Person person) {
+
+        System.out.println("----------------------------- "  + "addddddddddddddd");
         this.personDao.addPerson(person);
     }
 
@@ -33,9 +35,7 @@ public class PersonServiceImpl implements  PersonService{
 
     @Override
     @Transactional
-    public void removePerson(int id) {
-        this.personDao.removePerson(id);
-    }
+    public void removePerson(int id) {this.personDao.removePerson(id);}
 
     @Override
     @Transactional
@@ -43,7 +43,25 @@ public class PersonServiceImpl implements  PersonService{
 
     @Override
     @Transactional
+    public List<Person> listPeople(int pageid,int total) {
+        return this.personDao.listPeople(pageid, total);
+    }
+
+    @Override
+    @Transactional
     public List<Person> listPeople() {
         return this.personDao.listPeople();
     }
+
+    @Override
+    @Transactional
+    public String hhh(int total) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 1; i < listPeople().size() / 5 + 2; i++) {
+        sb.append("<a href=\"/people/" + i + "\">" + i + "</a>");
+        sb.append("\n");
+        }
+        return sb.toString();
+    }
+
 }

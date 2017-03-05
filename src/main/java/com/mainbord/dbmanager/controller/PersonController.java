@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class PersonController {
+    private int total = 5;
     private PersonService personService;
 
     @Autowired(required = true)
@@ -24,45 +25,57 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @RequestMapping(value = "people", method = RequestMethod.GET)
-    public String listPeople(Model model){
-        model.addAttribute("person", new Person());
-        model.addAttribute("listPeople", this.personService.listPeople());
+    @RequestMapping(value = "people/{pageid}", method = RequestMethod.GET)
+    public String listPeople(@PathVariable int pageid, Model model){
 
+        if(pageid!=1){ pageid=(pageid-1)*total+1; }
+
+        model.addAttribute("person", new Person());
+        model.addAttribute("listPeople", this.personService.listPeople(pageid, total));
+        model.addAttribute("hhh", this.personService.hhh(total));
         return "people";
     }
 
     @RequestMapping(value = "/people/add", method = RequestMethod.POST)
     public String addPerson(@ModelAttribute("person") Person person){
-        if(person.getIdd() == 0){
+        if(person.getId() == 0){
             this.personService.addPerson(person);
-        }
-        else {
+        }else {
             this.personService.updatePerson(person);
         }
-
-        return "redirect:/people";
-    }
-
-    @RequestMapping(value = "/remove/{id}")
-    public String removePerson(@PathVariable("id") int id){
-        this.personService.removePerson(id);
-        return "redirect:/people";
-    }
-
-
-    @RequestMapping("edit/{id}")
-    public String editBook(@PathVariable("id") int id, Model model){
-        model.addAttribute("person", this.personService.getPersonById(id));
-        model.addAttribute("listPeople", this.personService.listPeople());
 
         return "people";
     }
 
-    @RequestMapping("persondata/{id}")
-    public String bookData(@PathVariable("id") int id, Model model){
+
+    @RequestMapping(value = "/remove/{id}")
+    public String removePerson(@PathVariable("id") int id){
+        this.personService.removePerson(id);
+        return "people";
+    }
+
+
+    @RequestMapping("/edit/{id}")
+    public String editPerson(@PathVariable("id") int id, Model model){
+        model.addAttribute("person", this.personService.getPersonById(id));
+        int aa = 0;
+        for (int i = 0; i < this.personService.listPeople().size(); i++) {
+            if (this.personService.listPeople().get(i).getId() == id){
+                aa = ((i/ total)) * total;
+            }
+        }
+        System.out.println("------------- " + this.personService.listPeople().get(aa).getId());
+        model.addAttribute("listPeople", this.personService.listPeople(this.personService.listPeople().get(aa).getId(), total));
+
+        return "people";
+    }
+
+    @RequestMapping("/persondata/{id}")
+    public String personData(@PathVariable("id") int id, Model model){
         model.addAttribute("person", this.personService.getPersonById(id));
 
         return "persondata";
     }
+
+
 }

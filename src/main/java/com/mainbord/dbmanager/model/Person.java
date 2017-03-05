@@ -13,13 +13,13 @@ public class Person {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idd;
+    private int id;
 
     @Column (name = "name")
     private String name;
 
     @Column (name = "age")
-    private int agge;
+    private int age;
 
 /*    @Column(namme = "isAdmin", nullable = false, columnDefinition = "TINYINT(1)")*/
 /*    @Column(namme = "isAdmin", nullable = false, columnDefinition = "TINYINT", length = 1)*/
@@ -35,16 +35,16 @@ public class Person {
     @Column (name = "createdDate", columnDefinition = "1987-02-20 12:12:12")
     private Date createdDate;
 
-    public int getIdd() {
-        return idd;
+    public int getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getAgge() {
-        return agge;
+    public int getAge() {
+        return age;
     }
 
     public int getIsAdmin() {
@@ -55,16 +55,16 @@ public class Person {
         return createdDate;
     }
 
-    public void setIdd(int idd) {
-        this.idd = idd;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setAgge(int agge) {
-        this.agge = agge;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public void setIsAdmin(int isAdmin) {
@@ -78,9 +78,9 @@ public class Person {
     @Override
     public String toString() {
         return "Person{" +
-                "idd=" + idd +
+                "id=" + id +
                 ", namme='" + name + '\'' +
-                ", agge=" + agge +
+                ", age=" + age +
                 ", isAdmin=" + isAdmin +
                 ", createdDate=" + createdDate +
                 '}';
