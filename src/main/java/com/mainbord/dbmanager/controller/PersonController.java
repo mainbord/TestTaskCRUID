@@ -45,7 +45,7 @@ public class PersonController {
         }
         model.addAttribute("listPeople", this.personService.listPeople(1, total));
 
-        return "people";
+        return "redirect:/people/1";
     }
 
 
@@ -64,7 +64,7 @@ public class PersonController {
     public String removePerson(@PathVariable("id") int id, @ModelAttribute("person") Person person, Model model){
         this.personService.removePerson(id);
         model.addAttribute("listPeople", this.personService.listPeople(1, total));
-        return "people";
+        return "redirect:/people/1";
     }
 
 

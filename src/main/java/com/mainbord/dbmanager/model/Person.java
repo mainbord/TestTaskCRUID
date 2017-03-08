@@ -4,6 +4,9 @@ package com.mainbord.dbmanager.model;
  * Created by work on 15.02.2017.
  */
 
+import com.sun.istack.internal.NotNull;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -28,8 +31,13 @@ public class Person {
 /*    @Basic
     @Column(namme = "isAdmin", columnDefinition = "BIT", length = 1)*/
 /*    @Column(namme = "isAdmin", nullable = false, columnDefinition = "BIT", length = 1)*/
-    @Column (name = "isAdmin")
-    private int isAdmin;
+
+//    @Column (name = "isAdmin")
+//@Type(type="true_false") //not working for '1' and '0' in NUMERIC(1) field
+    @Type(type= "org.hibernate.type.NumericBooleanType")
+    @NotNull
+    @Column(name = "isAdmin", nullable = false)
+    private boolean isAdmin;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column (name = "createdDate", columnDefinition = "1987-02-20 12:12:12")
@@ -47,7 +55,7 @@ public class Person {
         return age;
     }
 
-    public int getIsAdmin() {
+    public boolean getIsAdmin() {
         return isAdmin;
     }
 
@@ -67,7 +75,7 @@ public class Person {
         this.age = age;
     }
 
-    public void setIsAdmin(int isAdmin) {
+    public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
 
