@@ -20,4 +20,5 @@ public interface PersonService {
     public List<Person> listPeople(int pageid, int total);
     public List<Person> listPeople();
     public String hhh(int total);
+    public List<Person> filterPeople(String name);
 }

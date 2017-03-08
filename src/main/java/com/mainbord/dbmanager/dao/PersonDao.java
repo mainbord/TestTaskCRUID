@@ -18,4 +18,5 @@ public interface PersonDao {
 
     public List<Person> listPeople(int pageid,int total);
     public List<Person> listPeople();
+    public List<Person> filterPeople(String name);
 }

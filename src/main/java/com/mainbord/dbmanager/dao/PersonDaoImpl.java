@@ -88,4 +88,22 @@ public class PersonDaoImpl implements PersonDao {
 
         return personList;
     }
+
+    @Override
+    public List<Person> filterPeople(String name) {
+
+        Session session = this.sessionFactory.getCurrentSession();
+
+        String query;
+        query = "from Person where name=\'" + name + "\'";
+        System.out.println(query);
+
+        List<Person> personList = session.createQuery(query).list();
+        System.out.println(personList.size());
+        System.out.println(personList.get(0).getName());
+        System.out.println(personList.get(0).getAge());
+        System.out.println(personList.get(0).getIsAdmin());
+        System.out.println(personList.get(0).toString());
+        return personList;
+    }
 }

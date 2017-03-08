@@ -37,26 +37,39 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/people/add", method = RequestMethod.POST)
-    public String addPerson(@ModelAttribute("person") Person person){
+    public String addPerson(@ModelAttribute("person") Person person, Model model){
         if(person.getId() == 0){
             this.personService.addPerson(person);
         }else {
             this.personService.updatePerson(person);
         }
+        model.addAttribute("listPeople", this.personService.listPeople(1, total));
 
         return "people";
     }
 
 
+    @RequestMapping(value = "/people/find", method = RequestMethod.POST)
+    public String searchPerson(@ModelAttribute("person") Person person, Model model){
+
+        System.out.println("______________________ " + person.getName());
+        model.addAttribute("listPeople", this.personService.filterPeople(person.getName()));
+        System.out.println("_________________________________ " + this.personService.filterPeople(person.getName()).size());
+
+        return "peoplefilter";
+    }
+
+
     @RequestMapping(value = "/remove/{id}")
-    public String removePerson(@PathVariable("id") int id){
+    public String removePerson(@PathVariable("id") int id, @ModelAttribute("person") Person person, Model model){
         this.personService.removePerson(id);
+        model.addAttribute("listPeople", this.personService.listPeople(1, total));
         return "people";
     }
 
 
     @RequestMapping("/edit/{id}")
-    public String editPerson(@PathVariable("id") int id, Model model){
+    public String editPerson(@PathVariable("id") int id, @ModelAttribute("person") Person person, Model model){
         model.addAttribute("person", this.personService.getPersonById(id));
         int aa = 0;
         for (int i = 0; i < this.personService.listPeople().size(); i++) {

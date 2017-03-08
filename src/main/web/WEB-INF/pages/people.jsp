@@ -85,7 +85,7 @@
 
 __________________
 ${hhh}
-_____________
+__________________
 
 <h1>Add a Person</h1>
 
@@ -161,16 +161,27 @@ _____________
     </table>
 </form:form>
 
-<c:url var="searchAction" value="/people/find/{name}"/>
+<c:url var="searchAction" value="/people/find"/>
 
 <form:form action="${searchAction}" commandName="person">
+
+
     <tr>
-        <td colspan="3">
-            <input type="submit"
-                   value="<spring:message text="Find Person by name"/>"/>
+        <td>
+            <form:label path="name">
+                <spring:message text="Find Person by name"/>
+            </form:label>
+        </td>
+        <td>
+            <form:input path="name"/>
         </td>
     </tr>
-
+    <tr>
+        <td>
+            <input type="submit"
+                   value="<spring:message text="Find"/>"/>
+        </td>
+    </tr>
 
 <%--    <td>
         <form:input path="search_name"/>

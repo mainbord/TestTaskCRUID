@@ -64,4 +64,9 @@ public class PersonServiceImpl implements  PersonService{
         return sb.toString();
     }
 
+    @Override
+    @Transactional
+    public List<Person> filterPeople(String name) {
+        return this.personDao.filterPeople(name);
+    }
 }
